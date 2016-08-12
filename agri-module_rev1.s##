@@ -2702,7 +2702,6 @@ Source: www.kingbright.com</description>
 <part name="5V2" library="BrainGrid - Supplies" deviceset="5V" device=""/>
 <part name="GND2" library="BrainGrid - Supplies" deviceset="GND" device=""/>
 <part name="U$4" library="BrainGrid - Analog" deviceset="ADS1015" device=""/>
-<part name="U$5" library="BrainGrid - Analog" deviceset="ADS1015" device=""/>
 <part name="LED1" library="BrainGrid - Diodes" deviceset="LED" device="CHIPLED-0603-TTW"/>
 <part name="LED2" library="BrainGrid - Diodes" deviceset="LED" device="CHIPLED-0603-TTW"/>
 <part name="LED3" library="BrainGrid - Diodes" deviceset="LED" device="CHIPLED-0603-TTW"/>
@@ -2712,12 +2711,12 @@ Source: www.kingbright.com</description>
 <part name="U$1" library="BrainGrid - Electromechanical" deviceset="RJ45_RA_SMD" device=""/>
 <part name="U$2" library="BrainGrid - Electromechanical" deviceset="RJ45_OUT_AGRI-BRD" device=""/>
 <part name="U$6" library="NXP" deviceset="PCA9540B_I2C_SWITCH" device=""/>
+<part name="SUPPLY2" library="BrainGrid - Supplies" deviceset="3.6V_HP" device=""/>
+<part name="GND4" library="BrainGrid - Supplies" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
 <plain>
-<text x="127" y="113.03" size="1.778" layer="104">   HIGH &gt; 2.1v
-   LOW &lt;  0.8v</text>
 <wire x1="20.32" y1="170.18" x2="43.18" y2="170.18" width="0.1524" layer="97"/>
 <wire x1="39.37" y1="172.72" x2="43.18" y2="170.18" width="0.1524" layer="97"/>
 <wire x1="43.18" y1="170.18" x2="39.37" y2="167.64" width="0.1524" layer="97"/>
@@ -2726,7 +2725,6 @@ Source: www.kingbright.com</description>
 <wire x1="26.67" y1="86.36" x2="22.86" y2="88.9" width="0.1524" layer="97"/>
 <wire x1="22.86" y1="88.9" x2="26.67" y2="91.44" width="0.1524" layer="97"/>
 <text x="43.18" y="87.63" size="1.27" layer="97" rot="R180">CHAIN DIRECTION</text>
-<text x="122.682" y="82.042" size="1.27" layer="97" rot="R90">      &lt;------BIT SHIFT DIRECTION--|</text>
 <text x="227.33" y="133.35" size="1.27" layer="104">  Spectra ADC</text>
 </plain>
 <instances>
@@ -2742,7 +2740,6 @@ Source: www.kingbright.com</description>
 <instance part="5V2" gate="G$1" x="91.44" y="180.34" rot="R270"/>
 <instance part="GND2" gate="G$1" x="86.36" y="154.94"/>
 <instance part="U$4" gate="G$1" x="232.41" y="121.92"/>
-<instance part="U$5" gate="G$1" x="232.41" y="81.28"/>
 <instance part="LED1" gate="G$1" x="261.62" y="115.57"/>
 <instance part="LED2" gate="G$1" x="270.51" y="119.38"/>
 <instance part="LED3" gate="G$1" x="279.4" y="123.19"/>
@@ -2751,7 +2748,9 @@ Source: www.kingbright.com</description>
 <instance part="GND1" gate="G$1" x="173.99" y="160.02"/>
 <instance part="U$1" gate="G$1" x="69.85" y="171.45"/>
 <instance part="U$2" gate="G$1" x="68.58" y="88.9"/>
-<instance part="U$6" gate="G$1" x="166.37" y="96.52"/>
+<instance part="U$6" gate="G$1" x="139.7" y="140.97"/>
+<instance part="SUPPLY2" gate="G$1" x="139.7" y="156.21"/>
+<instance part="GND4" gate="G$1" x="139.7" y="121.92"/>
 </instances>
 <busses>
 </busses>
@@ -2803,12 +2802,9 @@ Source: www.kingbright.com</description>
 <pinref part="U$1" gate="G$1" pin="GND"/>
 <pinref part="U$2" gate="G$1" pin="GND"/>
 </segment>
-</net>
-<net name="I2C_EN" class="0">
 <segment>
-<pinref part="U$3" gate="BME280" pin="SDO"/>
-<wire x1="85.09" y1="175.26" x2="158.75" y2="175.26" width="0.1524" layer="91"/>
-<pinref part="U$1" gate="G$1" pin="I2C_ENABLE"/>
+<pinref part="U$6" gate="G$1" pin="GND"/>
+<pinref part="GND4" gate="G$1" pin="GND"/>
 </segment>
 </net>
 <net name="N$1" class="0">
@@ -2820,9 +2816,7 @@ Source: www.kingbright.com</description>
 </net>
 <net name="N$2" class="0">
 <segment>
-<pinref part="U$3" gate="BME280" pin="SCK"/>
 <pinref part="R2" gate="G$1" pin="1"/>
-<wire x1="186.69" y1="175.26" x2="218.44" y2="175.26" width="0.1524" layer="91"/>
 <wire x1="218.44" y1="175.26" x2="218.44" y2="180.34" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -2912,6 +2906,10 @@ Source: www.kingbright.com</description>
 <pinref part="U$1" gate="G$1" pin="3.6V_HP"/>
 <pinref part="U$2" gate="G$1" pin="3.6V_HP"/>
 </segment>
+<segment>
+<pinref part="U$6" gate="G$1" pin="VCC"/>
+<pinref part="SUPPLY2" gate="G$1" pin="3.6V_HP"/>
+</segment>
 </net>
 <net name="N$8" class="0">
 <segment>
@@ -2945,10 +2943,4 @@ Source: www.kingbright.com</description>
 </sheets>
 </schematic>
 </drawing>
-<compatibility>
-<note version="6.3" minversion="6.2.2" severity="warning">
-Since Version 6.2.2 text objects can contain more than one line,
-which will not be processed correctly with this version.
-</note>
-</compatibility>
 </eagle>
