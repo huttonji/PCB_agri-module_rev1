@@ -8141,6 +8141,8 @@ http://www.semicon.panasonic.co.jp/ds4/DB2S205_DED.pdf</description>
 humidity</text>
 <text x="233.68" y="128.27" size="0.8128" layer="90">adc-Mplex</text>
 <text x="356.87" y="107.95" size="1.27" layer="90">hot film</text>
+<text x="328.93" y="5.08" size="2.286" layer="90">James Hutton</text>
+<text x="326.39" y="15.24" size="1.778" layer="90">Rev 1</text>
 </plain>
 <instances>
 <instance part="FRAME1" gate="G$1" x="0" y="0"/>
