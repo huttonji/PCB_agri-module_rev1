@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.5.0">
+<eagle version="7.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -7139,11 +7139,11 @@ Source: www.kingbright.com</description>
 <connect gate="G$1" pin="+5V" pad="1"/>
 <connect gate="G$1" pin="+5V'" pad="2"/>
 <connect gate="G$1" pin="3.6V_HP" pad="3"/>
-<connect gate="G$1" pin="GND" pad="8"/>
-<connect gate="G$1" pin="GND'" pad="7"/>
-<connect gate="G$1" pin="SCL" pad="6"/>
-<connect gate="G$1" pin="SDA" pad="4"/>
-<connect gate="G$1" pin="SPARE" pad="5"/>
+<connect gate="G$1" pin="GND" pad="8 NC1 NC2"/>
+<connect gate="G$1" pin="GND'" pad="5"/>
+<connect gate="G$1" pin="SCL" pad="7"/>
+<connect gate="G$1" pin="SDA" pad="6"/>
+<connect gate="G$1" pin="SPARE" pad="4"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -8215,7 +8215,6 @@ http://www.semicon.panasonic.co.jp/ds4/DB2S205_DED.pdf</description>
 </part>
 <part name="SUPPLY6" library="BrainGrid - Supplies" deviceset="VCC" device=""/>
 <part name="GND10" library="BrainGrid - Supplies" deviceset="GND" device=""/>
-<part name="SUPPLY7" library="BrainGrid - Supplies" deviceset="3.6V_HP" device=""/>
 <part name="C3" library="BrainGrid - Capacitors" deviceset="C_100N" device="_0402" value="100nF"/>
 <part name="GND11" library="BrainGrid - Supplies" deviceset="GND" device=""/>
 <part name="R10" library="BrainGrid - Resistors" deviceset="R_0R" device="_0402" value="0R"/>
@@ -8252,6 +8251,8 @@ http://www.semicon.panasonic.co.jp/ds4/DB2S205_DED.pdf</description>
 <part name="GND13" library="BrainGrid - Supplies" deviceset="GND" device=""/>
 <part name="U$2" library="BrainGrid - Electromechanical" deviceset="35RASMT2BHNTRX" device=""/>
 <part name="GND14" library="BrainGrid - Supplies" deviceset="GND" device=""/>
+<part name="U$9" library="BrainGrid - Electromechanical" deviceset="RJ45_RA_SMD" device=""/>
+<part name="SUPPLY7" library="BrainGrid - Supplies" deviceset="VCC" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -8273,6 +8274,7 @@ humidity</text>
 <text x="356.87" y="107.95" size="1.27" layer="90">hot film</text>
 <text x="328.93" y="5.08" size="2.286" layer="90">James Hutton</text>
 <text x="326.39" y="15.24" size="1.778" layer="90">Rev 1</text>
+<text x="264.16" y="124.46" size="1.778" layer="104">Source these LEDs</text>
 </plain>
 <instances>
 <instance part="FRAME1" gate="G$1" x="0" y="0"/>
@@ -8312,7 +8314,6 @@ humidity</text>
 </instance>
 <instance part="SUPPLY6" gate="G$1" x="271.78" y="186.69"/>
 <instance part="GND10" gate="G$1" x="224.79" y="55.88"/>
-<instance part="SUPPLY7" gate="G$1" x="224.79" y="93.98"/>
 <instance part="C3" gate="G$1" x="248.92" y="72.39" rot="R270"/>
 <instance part="GND11" gate="G$1" x="180.34" y="53.34"/>
 <instance part="R10" gate="G$1" x="180.34" y="63.5" rot="R90"/>
@@ -8349,6 +8350,8 @@ humidity</text>
 <instance part="GND13" gate="G$1" x="129.54" y="205.74"/>
 <instance part="U$2" gate="G$1" x="349.25" y="148.59" rot="R180"/>
 <instance part="GND14" gate="G$1" x="356.87" y="132.08"/>
+<instance part="U$9" gate="G$1" x="55.88" y="115.57"/>
+<instance part="SUPPLY7" gate="G$1" x="224.79" y="93.98"/>
 </instances>
 <busses>
 </busses>
@@ -8420,6 +8423,8 @@ humidity</text>
 <wire x1="71.12" y1="114.3" x2="73.66" y2="114.3" width="0.1524" layer="91"/>
 <wire x1="73.66" y1="114.3" x2="73.66" y2="106.68" width="0.1524" layer="91"/>
 <junction x="73.66" y="106.68"/>
+<pinref part="U$9" gate="G$1" pin="GND'"/>
+<pinref part="U$9" gate="G$1" pin="GND"/>
 </segment>
 <segment>
 <wire x1="222.25" y1="134.62" x2="220.98" y2="134.62" width="0.1524" layer="91"/>
@@ -8430,6 +8435,7 @@ humidity</text>
 <pinref part="GND9" gate="G$1" pin="GND"/>
 <pinref part="U$4" gate="ADS1015" pin="ADDR"/>
 <pinref part="U$4" gate="ADS1015" pin="RDY"/>
+<junction x="220.98" y="138.43"/>
 </segment>
 <segment>
 <pinref part="GND10" gate="G$1" pin="GND"/>
@@ -8448,6 +8454,7 @@ humidity</text>
 <junction x="180.34" y="58.42"/>
 <pinref part="U$7" gate="G$1" pin="A1"/>
 <pinref part="U$7" gate="G$1" pin="A2"/>
+<junction x="165.1" y="83.82"/>
 </segment>
 <segment>
 <pinref part="R12" gate="G$1" pin="1"/>
@@ -8491,6 +8498,8 @@ humidity</text>
 <wire x1="73.66" y1="124.46" x2="73.66" y2="121.92" width="0.1524" layer="91"/>
 <wire x1="73.66" y1="121.92" x2="71.12" y2="121.92" width="0.1524" layer="91"/>
 <junction x="73.66" y="124.46"/>
+<pinref part="U$9" gate="G$1" pin="+5V"/>
+<pinref part="U$9" gate="G$1" pin="+5V'"/>
 </segment>
 <segment>
 <pinref part="M1" gate="B" pin="S2"/>
@@ -8538,6 +8547,7 @@ humidity</text>
 <wire x1="152.4" y1="173.99" x2="152.4" y2="168.91" width="0.1524" layer="91"/>
 <wire x1="152.4" y1="173.99" x2="152.4" y2="175.26" width="0.1524" layer="91"/>
 <pinref part="SUPPLY2" gate="G$1" pin="3.6V_HP"/>
+<junction x="152.4" y="173.99"/>
 </segment>
 <segment>
 <pinref part="U$1" gate="G$1" pin="3.6V_HP"/>
@@ -8572,11 +8582,9 @@ humidity</text>
 <junction x="83.82" y="127"/>
 <pinref part="C1" gate="G$1" pin="1"/>
 <junction x="129.54" y="215.9"/>
-</segment>
-<segment>
-<pinref part="SUPPLY7" gate="G$1" pin="3.6V_HP"/>
-<pinref part="U$5" gate="G$1" pin="+V"/>
-<wire x1="224.79" y1="88.9" x2="224.79" y2="93.98" width="0.1524" layer="91"/>
+<pinref part="U$9" gate="G$1" pin="3.6V_HP"/>
+<junction x="123.19" y="215.9"/>
+<junction x="100.33" y="121.92"/>
 </segment>
 </net>
 <net name="N$18" class="0">
@@ -8699,6 +8707,7 @@ humidity</text>
 <wire x1="144.78" y1="142.24" x2="144.78" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="R1" gate="G$1" pin="2"/>
 <junction x="96.52" y="109.22"/>
+<pinref part="U$9" gate="G$1" pin="SCL"/>
 </segment>
 </net>
 <net name="N$7" class="0">
@@ -8710,6 +8719,7 @@ humidity</text>
 <pinref part="R18" gate="G$1" pin="2"/>
 <wire x1="104.14" y1="111.76" x2="71.12" y2="111.76" width="0.1524" layer="91"/>
 <junction x="104.14" y="111.76"/>
+<pinref part="U$9" gate="G$1" pin="SDA"/>
 </segment>
 </net>
 <net name="VCC" class="0">
@@ -8741,6 +8751,7 @@ humidity</text>
 <wire x1="152.4" y1="215.9" x2="203.2" y2="215.9" width="0.1524" layer="91"/>
 <junction x="203.2" y="215.9"/>
 <pinref part="SUPPLY5" gate="G$1" pin="VCC"/>
+<junction x="219.71" y="215.9"/>
 </segment>
 <segment>
 <wire x1="222.25" y1="142.24" x2="215.9" y2="142.24" width="0.1524" layer="91"/>
@@ -8756,6 +8767,11 @@ humidity</text>
 <segment>
 <pinref part="U$6" gate="G$1" pin="VCC"/>
 <pinref part="SUPPLY8" gate="G$1" pin="VCC"/>
+</segment>
+<segment>
+<pinref part="U$5" gate="G$1" pin="+V"/>
+<wire x1="224.79" y1="88.9" x2="224.79" y2="93.98" width="0.1524" layer="91"/>
+<pinref part="SUPPLY7" gate="G$1" pin="VCC"/>
 </segment>
 </net>
 <net name="N$10" class="0">
@@ -8826,6 +8842,7 @@ humidity</text>
 <segment>
 <wire x1="71.12" y1="116.84" x2="72.39" y2="116.84" width="0.1524" layer="91"/>
 <label x="72.39" y="116.84" size="1.27" layer="95" xref="yes"/>
+<pinref part="U$9" gate="G$1" pin="SPARE"/>
 </segment>
 </net>
 <net name="EC_SENSE" class="0">
@@ -8893,6 +8910,7 @@ humidity</text>
 <wire x1="350.52" y1="97.79" x2="350.52" y2="105.41" width="0.1524" layer="91"/>
 <wire x1="350.52" y1="105.41" x2="360.68" y2="105.41" width="0.1524" layer="91"/>
 <pinref part="TP4" gate="TP" pin="TP"/>
+<junction x="350.52" y="105.41"/>
 </segment>
 </net>
 <net name="N$23" class="0">
@@ -8937,6 +8955,16 @@ humidity</text>
 </nets>
 </sheet>
 </sheets>
+<errors>
+<approved hash="102,1,224.79,181.61,VDD,VCC,,,,"/>
+<approved hash="104,1,123.19,201.93,U2,VCC,3.6V_HP,,,"/>
+<approved hash="104,1,224.79,88.9,U$5,+V,VCC,,,"/>
+<approved hash="104,1,224.79,78.74,U$5,GND,N$13,,,"/>
+<approved hash="104,1,340.36,110.49,U$8,+V,N$23,,,"/>
+<approved hash="113,1,275.59,131.132,LED1,,,,,"/>
+<approved hash="113,1,284.48,134.942,LED2,,,,,"/>
+<approved hash="113,1,276.86,142.562,LED3,,,,,"/>
+</errors>
 </schematic>
 </drawing>
 <compatibility>
